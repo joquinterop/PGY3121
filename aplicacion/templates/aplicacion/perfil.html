@@ -1,0 +1,18 @@
+{% extends 'Aplicacion/base.html' %}
+{% load static %}
+
+{% block estaticos%}
+<link href="{% static 'css/perfil.css'%}" rel="stylesheet">
+{% endblock %}
+
+{% block cuerpo %}
+<div class="container">
+    <h1>Perfil</h1>
+    <form action="{% url 'perfil'%}" method="POST">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <a class="btn btn-info mt-2 form-control" href="{% url  'index'%}" id='' value="Inicio">
+        <input class="btn btn-info mt-2 form-control" type="submit" value="Actualizar">
+    </form>
+</div>
+{% endblock %}

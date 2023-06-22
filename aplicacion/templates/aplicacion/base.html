@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Proyecto</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="{% static 'css/base.css'%}" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        {% block estaticos%}
+        {% endblock %}
+      </head>
+    <body>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Proyecto</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Inicio</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nosotros'%}">Nosotros</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'catalogo'%}">Catalogo</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Repositorios
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'arte'%}">Arte</a></li>
+                          <li><a class="dropdown-item" href="{% url 'index'%}">Trabajo</a></li>
+                          <li><a class="dropdown-item" href="{% url 'index'%}">Noticia</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="d-flex flex-row-reverse">
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item dropdown">
+                          {% if user.is_authenticated %}
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{username}}</a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'perfil'%}">Perfil</a></li>
+                              <li><a class="dropdown-item" href="{% url 'cambio_password'%}">Cambiar Contraseña</a></li>
+                              <li><a class="dropdown-item" href="{% url 'cerrar_sesion'%}">Cerrar Sesion</a></li>
+                            </ul>
+                          {% else %}
+                            <a class="nav-link" href="{% url 'iniciar_sesion' %}" role="button" aria-expanded="false">Iniciar Session</a>
+                            <a class="dropdown-item" href="{% url 'registro'%}">Registrarse</a>
+                          {% endif %}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+        {% block cuerpo%}
+        {% endblock %}
+        <!--<div class="footer">
+          <p>Footer</p>
+        </div>-->
+        <div class="container-fluid">
+          <footer class="text-center text-lg-start" style="background-color: #CCC9C8;">
+            <!-- Copyright -->
+            <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+              Footer Proyecto PGY3121 © 2023 Copyright:
+            </div>
+            <!-- Copyright -->
+          </footer>
+          
+        </div>
+    </body>
+</html>

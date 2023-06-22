@@ -1,0 +1,17 @@
+{% extends 'Aplicacion/base.html' %}
+{% load static %}
+
+{% block estaticos%}
+<link href="{% static 'css/registro.css'%}" rel="stylesheet">
+{% endblock %}
+
+{% block cuerpo %}
+<div class="container">
+    <h1>Registro</h1>
+    <form action="{% url 'registro'%}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-info mt-2 form-control" type="submit" value="Registrar">
+    </form>
+</div>
+{% endblock %}

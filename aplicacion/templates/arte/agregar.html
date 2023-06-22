@@ -1,0 +1,12 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+{% block cuerpo %}
+<div class="container-fluid">
+  <h1>Ingresar Articulo</h1>
+  <form method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{formulario.as_p}}
+    <input type="submit">
+  </form>
+</div>
+{% endblock %}
